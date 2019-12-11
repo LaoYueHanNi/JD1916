@@ -1,0 +1,16 @@
+package com.briup.db.test;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MybatisTest {
+	@Test
+	public void test() {
+		try {
+			ApplicationContext ac = new ClassPathXmlApplicationContext("com/briup/db/mybatisDao/dao.xm");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

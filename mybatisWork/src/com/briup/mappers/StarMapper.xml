@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+			<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.mappers.StarMapper">
+
+	<resultMap type="Star" id="StarResult">
+		<id property="name" column="name" />
+		<result property="age" column="age" />
+		<result property="height" column="height" />
+		<result property="weight" column="weight" />
+	</resultMap>
+
+	
+	<insert id="insertStar" parameterType="Star">
+		INSERT INTO
+		STAR(NAME,AGE,HEIGHT,WEIGHT)
+		VALUES(#{NAME},#{AGE},#{HEIGHT},#{WEIGHT})
+	</insert>
+</mapper>

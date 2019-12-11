@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.briup.mappers.GroupAndUserMapper">
+
+	<resultMap type="Group" id="GroupResult">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+	</resultMap>
+	<resultMap type="User" id="UserResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+		<result property="groupId" column="group_id"/>
+	</resultMap>
+	
+	<insert id="insertGroup" parameterType="Group">
+		insert into t_group(id,name)
+		values(#{id},#{name})
+	</insert>
+	
+	<insert id="insertUser" >
+		insert into t_user(id,name,age,group_id)
+		values(my_seq.nextval,#{name},#{age},#{groupId})
+	</insert>
+	
+	<resultMap type="Group" id="GroupWithUser" extends="GroupResult">
+		<collection property="users"  resultMap="UserResult"></collection>
+	</resultMap>
+	
+	<select id="findGroupWithUser" resultMap="GroupWithUser">
+		select g.id g_id,g.name g_name,u.id,u.name,u.age
+		from t_user u,t_group g
+		where u.group_id=g.id
+	</select>
+	
+</mapper>

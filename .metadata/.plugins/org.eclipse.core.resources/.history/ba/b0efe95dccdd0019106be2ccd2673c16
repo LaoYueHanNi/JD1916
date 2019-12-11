@@ -1,0 +1,5 @@
+package com.briup.generic;
+//两个泛型参数s
+public class TwoGenericTest<K,V> {
+	
+}

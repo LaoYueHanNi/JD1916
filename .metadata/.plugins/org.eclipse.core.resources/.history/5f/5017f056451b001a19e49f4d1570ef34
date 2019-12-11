@@ -1,0 +1,17 @@
+package annotation;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class URLController {
+	
+	@RequestMapping("t1.action")
+	public String t1() {
+		return "first";
+	}
+	
+	public String t2() {
+		return "first";
+	}
+}

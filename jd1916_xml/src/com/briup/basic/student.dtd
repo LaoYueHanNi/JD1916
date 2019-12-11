@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 文档类型节点: 一个xml文件只有一个 -->
+<!DOCTYPE students[
+	<!ENTITY company "昆山浦东软件">
+	<!ELEME  NT name (#PCDATA)>
+	<!ELEMENT age (#PCDATA)>
+	<!ELEMENT gender (#PCDATA)>
+	<!ELEMENT students (student+)>
+	<!ELEMENT student (name,age,gender)>
+	<!ATTLIST student xh ID #REQUIRED 
+						id CDATA #REQUIRED 
+						in (d1|d2) #REQUIRED 
+						b CDATA "b1"
+						c CDATA #FIXED "c1">
+]>

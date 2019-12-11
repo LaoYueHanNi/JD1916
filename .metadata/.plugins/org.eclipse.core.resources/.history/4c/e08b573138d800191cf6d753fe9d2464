@@ -1,0 +1,12 @@
+package com.briup.ch05;
+
+public class TeamTest {
+	public static void main(String[] args) {
+		Team team=new Team();
+		Student s1=new Student("tom",20,true,89);
+		Student s1=new Student("lili",20,false,89);
+		Student s1=new Student("hah",20,true,70);
+		Student s1=new Student("ou",19,true,50);
+		
+	}
+}

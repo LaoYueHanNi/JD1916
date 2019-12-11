@@ -1,0 +1,24 @@
+}
+	}
+		}
+			//释放
+		}finally {
+			e.printStackTrace();
+		}catch(IOException e) {
+			}
+				fos.write(result);
+				System.out.print((char)result);
+			while((result=fis.read())!=-1) {
+			int result=-1;//读到字节
+			fos=new FileOutputStream("src/com/briup/IO/a.txt");
+			fis=new FileInputStream("src/com/briup/IO/FileCopy.java");
+		try {
+		FileOutputStream fos=null;
+	//输出
+		FileInputStream fis=null;
+	//读取文件数据的流
+	public static void main(String[] args) {
+public class FileCopy {
+//把一个文件拷贝到另外一个文件
+import java.io.*;
+package com.briup.IO;

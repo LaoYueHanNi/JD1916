@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 课程 -->
+
+<courses>
+	<course>
+		<name>unix</name>
+		<time>2</time>
+	</course>
+	<course>
+		<name>xml</name>
+		<time>2</time>
+	</course>
+	<course>
+		<name>corejava</name>
+		<time>20</time>
+	</course>
+	<course>
+		<name>oracle</name>
+		<time>20</time>
+	</course>
+</courses>

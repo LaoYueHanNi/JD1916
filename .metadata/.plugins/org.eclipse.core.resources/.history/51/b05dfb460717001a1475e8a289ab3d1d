@@ -1,0 +1,5 @@
+package com.briup.db.service;
+
+public class StudentServiceImpl {
+
+}

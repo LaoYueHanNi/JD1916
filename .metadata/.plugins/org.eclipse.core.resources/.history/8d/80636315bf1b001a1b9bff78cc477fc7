@@ -1,0 +1,56 @@
+package array;
+
+import java.util.ArrayList;
+
+//顺时针打印矩阵
+//输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，
+//例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+//则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
+public class N1 {
+	public ArrayList<Integer> printMatrix(int[][] matrix) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		int len1 = matrix.length;// 行数
+		int len2 = matrix[0].length;// 列数
+		int cycleNum = 0;
+
+		while (cycleNum * 2 < len1 && cycleNum * 2 < len2) {
+			// 一圈一圈打印
+			printCycle(matrix, list, len1, len2, cycleNum);
+			cycleNum++;
+		}
+
+		return list;
+	}
+
+	public void printCycle(int[][] matrix, ArrayList<Integer> list, int len1, int len2, int cycleNum) {
+		int endx = len2 - cycleNum - 1;
+		int endy = len1 - cycleNum - 1;
+
+		// 左到右打印
+		for (int i = cycleNum; i <= endx; i++) {
+			list.add(matrix[cycleNum][i]);
+		}
+		// 上到下打印
+		if (cycleNum < endy) {
+			for (int i = cycleNum + 1; i <= endy; i++) {
+				list.add(matrix[i][endy]);
+			}
+		}
+		// 右到左打印
+		if (cycleNum < endy && cycleNum < endx) {
+			for (int i = endy - 1; i >= cycleNum; i--) {
+				list.add(matrix[endx][i]);
+			}
+		}
+		// 从下到上打印
+		if (cycleNum < endy-1 && cycleNum < endx) {
+		for (int i = endx - 1; i > cycleNum; i--) {
+			list.add(matrix[i][cycleNum]);
+		}
+	}
+
+	public static void main(String[] args) {
+		int[][] matrix = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };// {13,14,15,16}
+		System.out.println(new N1().printMatrix(matrix));
+	}
+}

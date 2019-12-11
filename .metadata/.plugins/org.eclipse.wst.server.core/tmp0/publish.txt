@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Wed Dec 11 15:06:22 CST 2019
+org.eclipse.jst.jee.server\:springMVC=D\:\\Software\\apache-tomcat-8.5.38\\wtpwebapps\\springMVC
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\VV\\eclipse-workspace\\JD1916\\springMVC\\WebContent\\WEB-INF\\lib\\spring-web-4.3.20.RELEASE.jar=D\:\\Software\\apache-tomcat-8.5.38\\wtpwebapps\\springMVC\\WEB-INF\\lib\\spring-web-4.3.20.RELEASE.jar

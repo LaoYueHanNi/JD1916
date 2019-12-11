@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+p, span {
+	color: red;
+	font-size: 30px;
+}
+
+#p2 {
+	color: blue;
+}
+
+.c1 {
+	color: yellow
+}
+
+table {
+	border: 2px solid green;
+	width: 200px;
+	height: 200px;
+	border-collapse: collapse;
+}
+
+table tr td {
+	border: 2px solid green;
+}
+
+input {
+	font-size: 20px;
+	height: 50px;
+	width: 500px;
+	border-radius: 20px;
+	padding-left: 20px;
+	margin-bottom: 20px;
+}

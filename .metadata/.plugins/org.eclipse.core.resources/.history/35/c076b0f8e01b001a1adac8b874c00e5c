@@ -1,0 +1,13 @@
+package annotation;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class DataBindController {
+	
+	@RequestMapping("/data1")
+	public String data1() {
+		return "dataBind";
+	}
+}

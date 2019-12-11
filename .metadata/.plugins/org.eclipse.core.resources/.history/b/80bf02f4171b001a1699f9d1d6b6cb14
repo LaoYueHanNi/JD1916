@@ -1,0 +1,8 @@
+package handler;
+//自定义控制器
+public interface MyHandler  {
+	
+	public ModleAndView test() {
+		return null;
+	}
+}

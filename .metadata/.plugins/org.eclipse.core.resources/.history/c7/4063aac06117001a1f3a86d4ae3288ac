@@ -1,0 +1,20 @@
+package exam;
+
+public class N4 {
+	public String  getFourNums(int nums) {
+		long start = System.currentTimeMillis();
+		int Fn_1=0,Fn=1,result;
+		if(nums==0) return "0";
+		if(nums==1)return "1";
+		for(int i =3 ;i<=nums;i++) {
+			result = Fn_1+Fn;
+			Fn_1=Fn;
+			Fn=result;
+		}
+		long end = System.currentTimeMillis();
+		return ":"+result+","+(end-start);
+	}
+	public static void main(String[] args) {
+		System.out.println(new N4().getFourNums(9));
+	}
+}

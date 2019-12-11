@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.briup.mappers.ResultMapper">
+
+	<resultMap type="Student" id="StudentResult">
+		<id property="id" column="stud_id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="dob" column="dob" />
+		<result property="phone" column="phone" />
+	</resultMap>
+
+	<!-- resultType来定义查询出每行数据封装成的数据类型 -->
+	<select id="listStus" resultType="Student">
+		SELECT * FROM STUDENTS
+	</select>
+
+	<select id="listName" resultType="String">
+		SELECT NAME FROM STUDENTS
+	</select>
+
+	<select id="findStuById_map" resultType="map"
+		parameterType="int">
+		SELECT * FROM STUDENTS WHERE STUD_ID=#{id}
+	</select>
+
+	<select id="findStuById_mapList" resultType="map">
+		SELECT * FROM
+		STUDENTS WHERE STUD_ID=#{id}
+	</select>
+</mapper>

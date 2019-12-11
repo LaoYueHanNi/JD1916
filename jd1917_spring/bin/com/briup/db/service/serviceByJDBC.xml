@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		   http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean class="com.briup.db.service.StudentServiceImpl"
+		name="service">
+		<property name="stuDao" ref="stuDaoImp"></property>
+	</bean>
+
+	<!-- 配置事务的管理 -->
+	<!-- 配置事务管理器的对象,相当于切面类 -->
+	<bean name="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource2" />
+	</bean>
+
+	<!-- 配置事务拦截器(相当于同advice通知对象) -->
+	<bean name="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<!-- 注入事务管理器 -->
+		<property name="transactionManager" ref="transactionManager"></property>
+		<!-- 注入事务属性 -->
+		<!-- PROPAGATION_REQUIRED 事务七种属性中的其实一种。表示如果当前有事务 就拿要执行的操作放到这个事务里面,如果当前没有事务 
+			那么就新建一个事务然后把这个操作放进去执行。 -Exception 表示如果操作期间抛出了Exception异常或者是它的子类型异常, 那么当前的事务就回滚,-号代表回滚,如果是+号,代表依然提交。 -->
+		<property name="transactionAttributes">
+			<props>
+				<!-- *代表所有的方法 ,定义方法所需要的事务,key定义的是方法的名字,value写事物的属性 -->
+				<prop key="*">
+					PROPAGATION_REQUIRED,-Exception
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置代理对象 -->
+	<bean name="serviceProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 注入目标对象 -->
+		<property name="target" ref="service"></property>
+
+		<!-- 注入目标对象实现的接口 -->
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.briup.db.service.IStudentService</value>
+			</list>
+		</property>
+
+		<!-- 注入advice (也就是上面配置的事务拦截器) -->
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+</beans>

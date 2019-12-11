@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		   http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean class="com.briup.bean.Student" id="stud">
+		<property name="id" value="2"></property>
+		<property name="name" value="欧阳岭"></property>
+		<property name="gender" value="男"></property>
+		<property name="age" value="10"></property>
+	</bean>
+
+	
+	<bean class="com.briup.bean.Student" id="stu"  >
+		<property name="id" value="1"></property>
+		<property name="name" value="欧阳"></property>
+		<property name="gender" value="男"></property>
+		<property name="age" value="21"></property>
+		<property name="address" ref="addr"></property>
+		<property name="list">
+			<list>
+				<value>欧阳大</value>
+				<value>欧阳中</value>
+				<value>欧阳小</value>
+			</list>
+		</property>
+		<property name="set">
+			<set>
+				<value>欧大</value>
+				<value>欧中</value>
+				<value>欧小</value>
+			</set>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="1"><ref bean="stud"/></entry>
+			</map>
+		</property>
+				<property name="pros">
+		     <props>
+			  <prop key="key1">prop1</prop>
+			  <prop key="key2">prop2</prop>
+			  <prop key="key3">prop3</prop>
+		     </props>
+		</property>
+	</bean>
+	<alias name="stu" alias="s1" />
+</beans>

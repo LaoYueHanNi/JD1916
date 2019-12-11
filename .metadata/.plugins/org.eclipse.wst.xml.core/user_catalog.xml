@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="http://mybatis.org/dtd/mybatis-3-config.dtd" uri="platform:/resource/jd1917_Mybatis/dtd/mybatis-3-config.dtd"/>
+  <system systemId="http://www.springframework.org/schema/aop/spring-aop-3.2.xsd" uri="platform:/resource/jd1917_spring/schema/spring-aop-3.2.xsd"/>
+  <system systemId="http://www.springframework.org/schema/tx/spring-tx-3.2.xsd" uri="file:///D:/VVJAVA/老师文件/spring/day05/schema/spring-tx-3.2.xsd"/>
+  <system systemId="http://www.springframework.org/schema/context/spring-context-4.3.xsd" uri="file:///D:/VVJAVA/老师文件/spring-springmvc-4.3/spring-framework-4.3.20.RELEASE-dist/spring-framework-4.3.20.RELEASE/schema/context/spring-context-4.3.xsd"/>
+  <system systemId="http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd" uri="file:///D:/VVJAVA/老师文件/spring-springmvc-4.3/spring-framework-4.3.20.RELEASE-dist/spring-framework-4.3.20.RELEASE/schema/mvc/spring-mvc-4.3.xsd"/>
+  <system systemId="http://www.springframework.org/schema/beans/spring-beans-4.3.xsd" uri="file:///D:/VVJAVA/老师文件/spring-springmvc-4.3/spring-framework-4.3.20.RELEASE-dist/spring-framework-4.3.20.RELEASE/schema/beans/spring-beans-4.3.xsd"/>
+</catalog>

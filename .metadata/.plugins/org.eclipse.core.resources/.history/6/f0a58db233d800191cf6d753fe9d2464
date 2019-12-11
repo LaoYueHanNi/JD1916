@@ -1,0 +1,7 @@
+package com.briup.ch05;
+//管理学生团队信息
+public class Team {
+	private String name;
+	private Address address;
+	private Student[] name;
+}

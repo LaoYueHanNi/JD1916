@@ -1,0 +1,7 @@
+package com.briup.db.test;
+//测试底层是JDBC的事务
+public class TrByJDBCTest {
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,6 @@
+package com.briup.ch05;
+
+public class Xi {
+	private int age;
+	private int hah;
+}

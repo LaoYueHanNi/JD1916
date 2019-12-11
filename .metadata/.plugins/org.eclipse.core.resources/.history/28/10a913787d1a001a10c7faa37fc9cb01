@@ -1,0 +1,30 @@
+package n1_100;
+
+public class N4_2 {
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+		
+		if(nums1.length>nums2.length) {
+			int[] temp=nums1;
+			nums1 = nums2;
+			nums2 = temp;
+		}
+		
+		int length1 = nums1.length;
+		int length2 = nums2.length;
+		int left = 0 ; 
+		int right = length1;
+		int countHalf = (length1+length2+1)/2;
+		//左边有(m+n+1)/2个元素,等于i+j
+		while(left<=right) {
+			int i = (left+right)>>>1;
+			int j = countHalf-i;
+			if(nums1[i]<nums2[j-1]) {
+				left = i+1;
+			}else {
+				
+			}
+		}
+		
+		return 0;
+	}
+}

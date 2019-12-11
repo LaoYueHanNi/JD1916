@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.dao.OrderDao">
+	<!-- 保存订单 -->
+	<insert id="addOrder" parameterType="Order">
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select
+			es_orderForm_id.nextval
+			from dual
+		</selectKey>
+		insert into es_orderForm(orderFormId,cost,orderDate,customer_id)
+		values(#{id},#{cost},#{orderDate},#{customer.customerId})
+	</insert>
+	<!-- 查询订单 -->
+	
+	<resultMap type="Customer" id="CustomerResult">
+		<id property="customerId" column="customerId"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<result property="zipCode" column="zipCode"/>
+		<result property="address" column="address"/>
+		<result property="telephone" column="telephone"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	
+	<resultMap type="Order" id="OrderResult">
+		<id property="id" column="orderFormId"/>
+		<result property="cost" column="cost"/>
+		<result property="orderDate" column="orderDate"/>
+	</resultMap>
+	
+	<resultMap type="OrderLine" id="OrderLineResult">
+		<id property="id" column="orderLineId"/>
+		<result property="" column=""/>
+	</resultMap>
+	
+	<resultMap type="Order" id="OrderWithCustomerResult" extends="OrderResult">
+		<association property="customer" resultMap="CustomerResult"></association>
+	</resultMap>
+	
+	<select id="selectOrder" parameterType="int" resultMap="OrderWithCustomerResult">
+		select  o.orderFormId ,o.cost,o.orderDate,c.customerId,c.name,c.password,c.zipCode,c.address,c.telephone,c.email
+		from es_orderForm o,es_customer c
+		where o.customer_id=#{customerId} and o.customer_id=c.customerId
+	</select>
+	<!-- 删除订单 -->
+</mapper>

@@ -1,0 +1,8 @@
+package annotation;
+
+public class DataBindController {
+	
+	public String data1() {
+		return "dataBind";
+	}
+}

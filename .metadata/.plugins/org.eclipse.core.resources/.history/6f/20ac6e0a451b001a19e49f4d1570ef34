@@ -1,0 +1,11 @@
+package annotation;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class URLController {
+	
+	public String t1() {
+		return "first";
+	}
+}

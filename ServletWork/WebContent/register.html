@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<base href="http://localhost:8989/ServletWork/">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#div1{
+		margin-top: 100px;
+		margin-left: 200px;
+		background-image: url("images/13.png");
+		width: 680px;
+		height: 500px;
+		border: solid green 1px; 
+	}
+	#div2{
+		padding-top: 100px;
+		padding-left: 150px;
+	}
+	.preSpan{
+		font-family: cursive;
+		font-style: oblique;
+		color: #54971E;
+	}
+	.subSpan{
+		font-family: cursive;
+		font-style: oblique;
+		color:#EA1C8F;
+	}
+	input{
+		border-radius: 10px;
+	}
+	.input{
+		color: #54971E;
+	}
+</style>
+</head>
+<body>
+	<form action="RegisterWork1" method="get">
+	<div id="div1">
+		<div id="div2">
+			<span class="preSpan" >昵称</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="text" name="username">&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="subSpan">例如小霸王</span>
+			<br>
+			
+			<span class="preSpan">密码</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="password" name="password">&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="subSpan">0-8个字符</span>
+			<br>
+			
+			<span class="preSpan">性别</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="gender" value="男">男&nbsp;&nbsp;
+			<input type="radio" name="gender" value="女">女&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="subSpan">请如实选择</span>
+			<br>
+			
+			<span class="preSpan">年龄</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="text" name="age">&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="subSpan">未满18周岁禁止注册</span>
+			<br>
+			
+			<span class="preSpan">爱好</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="checkbox" name="hobby" value = "篮球">篮球
+			<input type="checkbox" name="hobby" value = "足球">足球
+			<input type="checkbox" name="hobby" value = "排球">排球&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="subSpan"  name="hobby">可以不选</span>
+			<br>
+			
+			<span class="preSpan" >城市</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<select name="city">
+				<option value="上海">上海</option>
+				<option value="北京">北京</option>
+				<option value="江苏">江苏</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="subSpan">当前居住</span>
+			<br>
+			
+			<span class="preSpan" >格言</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<textarea rows="5" cols="10" name="motto"></textarea>&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="subSpan">人生灯塔</span>
+			<br>
+			
+			<span class="preSpan">确定</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="input" type="submit" value="注册">
+			<input class="input" type="reset"  value="重置">
+			
+			
+		</div>
+	</div>
+	</form>
+</body>
+</html>

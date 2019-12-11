@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.briup.dao.ProductMapper">
+
+	<resultMap type="Product" id="ProductResult">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="price" column="PRICE" />
+		<result property="productor" column="PRODUCTOR" />
+	</resultMap>
+
+	<delete id="deleteProduct" parameterType="String">
+		delete from e_product
+		where name= #{name}
+	</delete>
+
+	<insert id="addProduct" parameterType="Product">
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			SELECT
+			pro_seq.nextval FROM DUAL
+		</selectKey>
+		insert into e_product values(#{id},#{name},#{price},#{productor})
+	</insert>
+
+	<update id="updateProduct" parameterType="Product">
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			SELECT
+			pro_seq.nextval FROM DUAL
+		</selectKey>
+		update e_product
+		set id=#{id},name=#{name},price=#{price},productor=#{productor}
+		where name=#{name}
+	</update>
+	<select id="GetProduct" parameterType="String" resultType="product">
+		select * 
+		from e_product
+		where name=#{name}
+	</select>
+</mapper>

@@ -1,0 +1,50 @@
+package n1_100;
+
+public class N34_2 {
+	// ¶þ·Ö·¨
+	public int[] searchRange(int[] nums, int target) {
+		int[] result = { -1, -1 };
+		int mid = 0;
+		int m = 0;
+		if((mid = findTarget(nums, 0, nums.length-1, target))!=-1) {
+			result[0]=mid;result[0]=mid;
+			m =mid;
+//			while(nums[mid-1]!=target){
+//				if((mid = findTarget(nums, 0, mid-1, target))!=-1) {
+//					result[0]=mid;
+//				}
+//			}
+//			while(nums[m+1]!=target) {
+//				if((m=findTarget(nums, m+1, nums.length-1, target))!=-1) {
+//					result[1]=m;
+//				}
+//			}
+			while(nums[mid++]==target) {
+				result[1]=mid-1;
+			}
+		}
+	   return result;
+	}
+
+	public int findTarget(int[] nums, int left, int right, int target) {
+		while (left <= right) {
+			int mid = (left + right) / 2;
+			if (nums[mid] == target) {
+				return mid;
+			} else if (nums[mid] > target) {
+				right = mid - 1;
+			} else {
+				left = mid + 1;
+			}
+		}
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		int[] nums = { 5,7,7,8,8,10 };
+		int target = 8;
+		int[] result = new N34().searchRange(nums, target);
+		System.out.println(result[0] + "," + result[1]);
+
+	}
+}

@@ -1,0 +1,11 @@
+package com.briup.db.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+//测试底层是JDBC的事务
+public class TrByJDBCTest {
+	public static void main(String[] args) {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("com/briup/db/service/serviceByJDBC.xml","com/briup/db/mybatisDao/dao.xml");
+	}
+}

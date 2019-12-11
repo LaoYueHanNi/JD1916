@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="com.briup.mappers.WifeAndHusbandMapper">
+	<resultMap type="Wife" id="WifeResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+	</resultMap>
+	
+	<resultMap type="Husband" id="HusbandResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+	</resultMap>
+	
+	<!-- 分割线 -->
+	
+	<resultMap type="Wife" id="WifeWithHusbandResult" extends="WifeResult">
+		<association property="husband" resultMap="HusbandResult"></association>
+	</resultMap>
+	<select id="selectWifeAndHusband" parameterType="int" resultMap="WifeWithHusbandResult">
+		select w.id,w.name,w.age,h.id,h.name,h.age
+		from wife w left join husband h
+		on w.h_id=h.id
+		where w.id=#{id}
+	</select>
+	<!-- 分割线 -->
+	
+	<resultMap type="Wife" id="WifeWithHusbandResult2" extends="WifeResult">
+		<association property="husband" select = "findHusband" column="h_id">
+		</association>
+	</resultMap>
+	<select id="findHusband" parameterType="int" resultMap="HusbandResult">
+		select *
+		from husband
+		where id = #{id}
+	</select>
+	<select id="findWife" resultMap="WifeWithHusbandResult2" parameterType="int">
+		select *
+		from wife
+		where id=#{id}
+	</select>
+	
+	
+	<!-- 插入丈夫表 -->
+	<insert id="insertHusband" parameterType="Husband">
+		<selectKey resultType="int" order="BEFORE" keyProperty="id">
+			select husband_id.nextval from dual
+		</selectKey>
+		insert into husband
+		values(#{id},#{name},#{age})
+	</insert>
+	<!-- 插入妻子表 -->
+	<insert id="insertWife" parameterType="Wife">
+		insert into wife
+		values(wife_id.nextval,#{name},#{age},#{husband.id})
+	</insert>
+</mapper>

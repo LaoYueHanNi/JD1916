@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<base href="http://localhost:8989/TeacherByServlet/">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>邮箱登录</title>
+<style type="text/css">
+	body{
+		font-size: 20px;
+		margin: 0px;
+		padding: 0px;
+		background: url("logo.gif");
+		background-repeat: no-repeat;
+		background-position: right,bottom;
+		background-color: #7DDC87;
+	}
+	input {
+		border: 1px solid yellow;
+		border-radius:20px;
+		line-height: 25px;
+	}
+	.btn{
+		width:70px;
+		height:30px;
+		color:blue;
+		font-size:28sp;
+		border:1px solid yellow;
+		border-radius:20px;
+	}
+	.btn:LINK;.btn:VISITED {
+		background-color: #F0F0F0;
+    }
+    .btn:HOVER {
+		background-color: #148D08;
+
+	}
+</style>
+</head>
+<body>
+	<center>
+		<form action="LoginS">
+			<table>
+				<tr><td>用户名:</td>
+				<td><input type="text" name="name"></td>
+					<td>@163.com</td></tr>
+				<tr><td>密&nbsp;&nbsp;码:</td>
+				<td><input type="password" name="pwd"></td>
+					<td><a href="">忘记密码</a></td></tr>	
+			</table>
+				<input type="submit" value="登录" class="btn">
+					&nbsp;<a href="register.html">注册邮箱</a>
+		</form>
+	</center>
+</body>
+</html>

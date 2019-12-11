@@ -1,0 +1,27 @@
+package annotation;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+//控制器得类
+@Controller
+public class AnnotationController {
+
+		//返回ModelAndView的对象
+		//处理请求得访问
+		@RequestMapping("/h1.action")
+		public ModelAndView test1() {
+			ModelAndView mv = new ModelAndView("first");
+			mv.addObject("msg","annotation");
+			return mv;
+		}
+		
+		//返回值2:返回String,逻辑视图名
+			//传入参数:Model对象
+		@RequestMapping("/h2.action")
+		public String test(Model model) {
+			return "first";
+		}
+
+}

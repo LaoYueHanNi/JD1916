@@ -1,0 +1,10 @@
+package n1_100;
+
+public class N34 {
+	public int[] searchRange(int[] nums, int target) {
+		int left = -1;
+		int right = -1;
+		int [] result ;
+		return null;
+	}
+}

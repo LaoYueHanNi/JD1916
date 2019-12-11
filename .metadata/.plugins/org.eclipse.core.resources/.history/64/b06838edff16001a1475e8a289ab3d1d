@@ -1,0 +1,5 @@
+package com.briup.db.test;
+
+public class MybatisTest {
+
+}

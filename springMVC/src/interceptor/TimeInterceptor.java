@@ -1,0 +1,34 @@
+package interceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+public class TimeInterceptor implements HandlerInterceptor{
+
+	//每个副本都会自己副本
+	private ThreadLocal<Long> local = new ThreadLocal<Long>();
+	//取开始时间
+	@Override
+	public boolean preHandle(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse,
+			Object paramObject) throws Exception {
+		local.set(System.currentTimeMillis());
+		return true;
+	}
+	//取结束时间
+	@Override
+	public void postHandle(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse,
+			Object paramObject, ModelAndView paramModelAndView) throws Exception {
+		System.out.println("消耗得时长:"+(System.currentTimeMillis()-local.get()));
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest paramHttpServletRequest,
+			HttpServletResponse paramHttpServletResponse, Object paramObject, Exception paramException)
+			throws Exception {
+		
+	}
+
+}

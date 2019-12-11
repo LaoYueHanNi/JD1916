@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;ResultMapper.xml&apos; to &apos;jd1917_Mybatis/src/com.briup.mappers&apos;&#x0D;&#x0A;- Original project: &apos;jd1917_smarthome&apos;&#x0D;&#x0A;- Destination element: &apos;jd1917_Mybatis/src/com.briup.mappers&apos;&#x0D;&#x0A;- Original element: &apos;ResultMapper.xml&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="=jd1917_Mybatis/src&lt;com.briup.mappers" element1="ResultMapper.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1574212447838" units="0" version="1.0"/>
+</session>

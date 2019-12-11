@@ -1,0 +1,31 @@
+package interceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+public class TimeInterceptor implements HandlerInterceptor{
+
+	//取开始时间
+	@Override
+	public boolean preHandle(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse,
+			Object paramObject) throws Exception {
+		return false;
+	}
+	//取结束时间
+	@Override
+	public void postHandle(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse,
+			Object paramObject, ModelAndView paramModelAndView) throws Exception {
+		
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest paramHttpServletRequest,
+			HttpServletResponse paramHttpServletResponse, Object paramObject, Exception paramException)
+			throws Exception {
+		
+	}
+
+}

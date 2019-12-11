@@ -1,0 +1,12 @@
+package com.briup.service;
+
+import com.briup.bean.Teacher;
+import com.briup.exception.TeacherException;
+
+//定义Service的标准
+public interface ITeacherService {
+	//注册
+	public void register(Teacher t) throws TeacherException;
+	//登录
+	public Teacher login(String name,String pwd) throws TeacherException;
+}

@@ -1,0 +1,33 @@
+package annotation;
+
+import java.io.Reader;
+import java.io.Writer;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import pojo.Customer;
+
+@Controller
+public class DataBindController {
+	
+	@RequestMapping("/data1")
+	public String data1() {
+		return "dataBind";
+	}
+	
+	//功能方法的参数2
+	@RequestMapping("/data2")
+	public String data2(Reader r,Writer w) {
+		System.out.println("r:"+r);
+		System.out.println("w:"+w);
+		return "dataBind";
+	}
+	
+	//要请求中参数的key与java bean 类中的属性名一致
+	@RequestMapping("/data5")
+	public String data5(Customer cus) {
+		System.out.println(cus);
+		return "dataBind";
+	}
+}

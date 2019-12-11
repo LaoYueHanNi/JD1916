@@ -1,0 +1,12 @@
+package annotation;
+
+import org.springframework.stereotype.Controller;
+
+//¿ØÖÆÆ÷µÃÀà
+@Controller
+public class AnnotationController {
+
+		public ModelAndView test1() {
+			return null;
+		}
+}

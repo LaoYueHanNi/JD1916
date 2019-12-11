@@ -1,0 +1,11 @@
+package annotation;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class DataBindController {
+	
+	@RequestMapping("data1")
+	public String data1() {
+		return "dataBind";
+	}
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 引入外部dtd -->
+<!DOCTYPE students SYSTEM "student.dtd">
+<students>
+	<student xh="s1" id="1" in="d2" b="b2" c="c1">
+		<name>张三</name>	
+		<age>20</age>
+		<gender>男</gender>
+	</student>
+	<student xh="s2" id="2" in="d1">
+		<name>许乐</name>	
+		<age>21</age>
+		<gender>男</gender>
+	</student>
+	<student xh="s3" id="3" in="d2">
+		<name>宁缺</name>	
+		<age>18</age>
+		<gender>男</gender>
+	</student>
+</students>

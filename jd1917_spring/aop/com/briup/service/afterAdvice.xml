@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		   http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean class="com.briup.aop.bean.Account" name="account">
+		<property name="id" value="1"></property>
+		<property name="name" value="zs"></property>
+		<property name="balance" value="2311"></property>
+	</bean>
+
+	<bean class="com.briup.aop.dao.AccountDaoImpl" name="dao">
+	</bean>
+
+	<bean class="com.briup.service.AccountServiceImpl" name="service">
+		<property name="account" ref="account"></property>
+		<property name="accountDao" ref="dao"></property>
+	</bean>
+	<!-- 配置切面类对象 -->
+	<bean class="com.briup.aop.aspect.MyLog" name="log"></bean>
+	<!-- 配置后置通知对象 -->
+	<bean class="com.briup.aop.advice.MyAfterAdvice" name="after">
+		<property name="log" ref="log"></property>
+	</bean>
+
+	<!-- 配置代理对象 -->
+	<!-- 这里使用的是spring的一个代理对象工厂类产生的 -->
+	<bean name="proxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 注入目标对象 -->
+		<property name="target" ref="service"></property>
+
+		<!-- 注入目标对象所实现的接口 可以有多个接口 -->
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.briup.service.IAccountService</value>
+			</list>
+		</property>
+
+		<!-- 注入advice 可以有多个 -->
+		<property name="interceptorNames">
+			<list>
+				<value>after</value>
+			</list>
+		</property>
+	</bean>
+</beans>

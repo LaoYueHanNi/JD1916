@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.briup.mappers.One2ManyMapper">
+	<!-- 讲师对应关系 -->
+	<resultMap type="Tutor" id="TutorResult">
+		<id property="tutorId" column="tutor_id" />
+		<result property="name" column="tname" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+	</resultMap>
+	<!-- 课程对应关系 -->
+	<resultMap type="Course" id="CourseResult">
+		<id property="courseId" column="course_id" />
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+		<result property="startDate" column="start_date" />
+		<result property="endDate" column="end_date" />
+	</resultMap>
+	<!--  地址查询 -->
+	<resultMap type="Address" id="AddressResult">
+		<id property="addrId" column="addr_id" />
+		<result property="street" column="street" />
+		<result property="city" column="city" />
+		<result property="state" column="state" />
+		<result property="zip" column="zip" />
+		<result property="country" column="country" />
+	</resultMap>
+
+	<!-- 级联对应关系 -->
+	<resultMap type="Tutor" id="TutorWIthCourseResult" extends="TutorResult">
+		<!-- 关联一个对象,collection关联集合<association property="courses" resultMap="CourseResult"></association> -->
+		<association property="address" resultMap="AddressResult"></association>
+		<collection property="courses" resultMap="CourseResult"></collection>
+		
+	</resultMap>
+
+	<!-- 嵌套结果-查询所有讲师的信息,包含课程信息 -->
+	<select id="listTutorsWithCourse"
+		resultMap="TutorWIthCourseResult">
+		select t.tutor_id,t.name
+		tname,t.email,t.phone,t.addr_id,c.course_id,c.name,c.description,c.start_date,c.end_date
+		from Tutors t,Courses c
+		where t.tutor_id=c.tutor_id
+	</select>
+	
+	<!-- 嵌套查询 -->
+	<resultMap type="Tutor" id="TutorWIthCourseResult2" extends="TutorResult">
+		<collection property="courses" select="findCoursesByTutorId" column="tutor_id"></collection>
+	</resultMap>
+	<select id="findTutorById" parameterType="int" resultMap="TutorWIthCourseResult2">
+		select * 
+		from tutors
+		where tutor_id=#{id}
+	</select>
+	
+	<select id="findCoursesByTutorId" parameterType="int" resultMap="CourseResult">
+		select * 
+		from courses
+		where tutor_id=#{id}
+	</select>
+	
+</mapper>
+	

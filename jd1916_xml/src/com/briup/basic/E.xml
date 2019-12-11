@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CATALOG SYSTEM "E.dtd">
+<CATALOG>
+	<PRODUCT NAME="XULE" CATEGORY (HandTool)="HandTool" PARTNUM="XIXI" 
+					PLANT (Pittsburgh)="Chicago" 
+					INVENTORY (InStock)="InStock"> 
+		<SPECIFICATIONS WEIGHT="XX" POWER="XIXI">JUANMAO</SPECIFICATIONS>
+		<OPTIONS FINISH (Metal)="Matte" 
+				ADAPTER (Included)="Included"
+				CASE (HardShell)="HardShell">11</OPTIONS> 
+				 
+		<PRICE MSRP="1" WHOLESALE="2" STREET="3" SHIPPING="4">2</PRICE>
+		<NOTES>22</NOTES>
+	</PRODUCT>
+</CATALOG>

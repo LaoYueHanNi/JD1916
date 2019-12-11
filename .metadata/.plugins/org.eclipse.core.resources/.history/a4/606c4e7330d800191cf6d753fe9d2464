@@ -1,0 +1,6 @@
+package com.briup.ch05;
+
+public class Hand {
+	private int num;
+	
+}

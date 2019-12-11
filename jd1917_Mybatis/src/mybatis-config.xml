@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties">
+		<!-- <property name="name" value="briup"/> <property name="password" value="briup"/> 
+			<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/> <property 
+			name="driver" value="oracle.jdbc.driver.OracleDriver"/> -->
+	</properties>
+
+	<!-- 设置全局参数 -->
+	<settings>
+		<setting name="logPrefix" value="qifei:" />
+	</settings>
+
+	<!-- 定义类型别名：就是给pojo类取一个名字 -->
+	<typeAliases>
+		<!-- <typeAlias type="com.briup.bean.Student" alias="Student" /> -->
+		<!-- 自动扫描该包,别名设置为类名 -->
+		<package name="com.briup.bean" />
+	</typeAliases>
+
+	<!-- 注册自定义的类型处理器 -->
+	<typeHandlers>
+		<typeHandler
+			handler="com.briup.typehandlers.PhoneTypeHandler" />
+		<typeHandler
+			handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
+			javaType="com.briup.bean.Gender" />
+
+
+	</typeHandlers>
+
+	<!-- 提供数据库的连接信息 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 配置事务管理器 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${name}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 提供映射文件的路径 -->
+	<mappers>
+		<!-- <mapper resource="com/briup/mappers/StudentMapper.xml"/> <mapper resource="com/briup/mappers/ResultMapper.xml"/> 
+			<mapper resource="com/briup/mappers/One2OneMapper.xml"/> <mapper resource="com/briup/mappers/WifeAndHusbandMapper.xml"/> 
+			<mapper resource="com/briup/mappers/One2ManyMapper.xml"/> -->
+		<!-- <mapper resource="com/briup/mappers/Many2ManyMapper.xml"/> -->
+		<!-- <mapper resource="com/briup/mappers/DynamicSqlMapper.xml"/> -->
+		<mapper class="com.briup.mappers.SpecialMapper" />
+
+	</mappers>
+
+</configuration>

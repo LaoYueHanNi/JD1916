@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="" method="get">
+		<div id="div1">
+			<div id="div2">
+				<span class="preSpan">删除产品</span>
+				<input type="text" name="proname">
+			</div>
+			<div id="div2">
+				<span class="preSpan">修改产品</span>
+				<input type="text" name="updatename">产品名称
+				<br>
+				<input type="number" name="updatprice">产品价格
+				<br>
+				<input type="text" name="updatename">产品级别
+				<br>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

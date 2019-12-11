@@ -1,0 +1,7 @@
+package com.briup.ch05;
+
+public class Rectangle {
+	private int x,y;
+	private int chang;
+	private int kuan;
+}

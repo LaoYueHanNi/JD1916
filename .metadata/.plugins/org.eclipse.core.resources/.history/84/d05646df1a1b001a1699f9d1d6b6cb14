@@ -1,0 +1,8 @@
+package interceptor;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+
+//À¹½ØÆ÷
+public class FirstInterceptor implements HandlerInterceptor{
+
+}

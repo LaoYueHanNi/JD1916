@@ -1,0 +1,17 @@
+package com.briup.db.service;
+
+import com.briup.db.bean.Student;
+import com.briup.db.dao.IStudentDao;
+
+public class StudentServiceImpl implements IStudentService{
+	 
+	private IStudentDao stuDao;
+	public void setDao(IStudentDao stuDao) {
+		this.dao=stuDao;
+	}
+	@Override
+	public void saveStudent(Student stu) {
+		
+	}
+
+}

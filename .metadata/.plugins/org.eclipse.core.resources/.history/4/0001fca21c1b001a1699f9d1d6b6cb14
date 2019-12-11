@@ -1,0 +1,39 @@
+package interceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+//第一个SpringMVC的拦截器,实现HandlerInterceptor接口
+public class FirstInterceptor implements HandlerInterceptor{
+
+	//控制器预处理的方法,第三个参数:即将要访问得控制器对象
+	//返回值:true,访问继续
+	//返回值:false,访问中断
+	@Override
+	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp,
+			Object handler) throws Exception {
+		System.out.println("第一个拦截器preHandler");
+		return false;
+	}
+	
+	//控制器处理之后,视图渲染前调用
+	//第四个参数:控制器处理完之后返回的ModelAndView对象
+	//该方法中可以修改ModelAndView对象
+	@Override
+	public void postHandle(HttpServletRequest req, HttpServletResponse resp,
+			Object handler, ModelAndView paramModelAndView) throws Exception {
+		System.out.println("这是第一个拦截器postHandler方法");
+	}
+
+	//在视图渲染之后被调用
+	@Override
+	public void afterCompletion(HttpServletRequest req,
+			HttpServletResponse resp, Object handler, Exception paramException)
+			throws Exception {
+		System.out.println("这是第一个拦截器afterCompletion方法");
+	}
+
+}

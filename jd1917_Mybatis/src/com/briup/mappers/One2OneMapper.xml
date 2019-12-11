@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.briup.mappers.One2OneMapper">
+	<!--最基本的映射关系 -->
+	<!-- <resultMap type="Student" id="StudentResult">
+		<id property="id" column="stud_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="dob" column="dob"/>
+		<result property="address.country" column="country"/>
+		<result property="address.city" column="city"/>
+		<result property="address.street" column="street"/>
+		<result property="address.zip" column="zip"/>
+		<result property="address.addrId" column="addr_id"/>
+		<result property="address.state" column="state"/>
+	</resultMap> -->
+	
+	<!-- 嵌套结果的方式:关联一对一 -->
+	
+	<resultMap type="Student" id="StudentResult">
+		<id property="id" column="stud_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="dob" column="dob"/>
+		</resultMap>
+
+	<resultMap type="Address" id="AddressResult">
+		<id property="addrId" column="addr_id" />
+		<result property="street" column="street" />
+		<result property="city" column="city" />
+		<result property="state" column="state" />
+		<result property="zip" column="zip" />
+		<result property="country" column="country" />
+	</resultMap> 
+		
+	<resultMap type="Student" id="StudentResultWithAddress" extends="StudentResult" >
+		<association property="address" resultMap="AddressResult"></association>
+	</resultMap>
+	
+	<!-- 查询某个学生的信息包括地址的信息 -->
+	<select id="findStuByIdWithAddress" parameterType="int" resultMap="StudentResultWithAddress">
+		select s.stud_id,s.name,s.email,s.dob,a.country,a.city,a.street,a.state,a.addr_id,a.zip
+		from students s left join addresses a
+		on s.addr_id=a.addr_id 
+		where s.stud_id=#{id}
+	</select>
+	
+	<!-- 查询所有学生的信息包括地址的信息 -->
+	<select id="findStuWithAddress"  resultMap="StudentResultWithAddress">
+		select s.stud_id,s.name,s.email,s.dob,a.country,a.city,a.street,a.state,a.addr_id,a.zip
+		from students s left join addresses a
+		on s.addr_id=a.addr_id 
+	</select>
+	
+	<!-- 分隔线 -->
+	
+	<!-- 嵌套查询的方式: 关联一对一 -->
+	<resultMap type="Student" id="StudentResultWithAddress2" extends="StudentResult">
+		<association property="address"  select="findAddressById" column="addr_id"></association>
+	</resultMap>
+	
+	<select id="findAddressById" parameterType="int" resultMap="AddressResult">
+		select * 
+		from addresses
+		where addr_id=#{id}
+	</select>	
+	<select id="ListStusWIthAddress" resultMap="StudentResultWithAddress2">
+		select *
+		from students
+	</select>
+	
+	<!-- 插入地址表的数据 -->
+	<insert id="insertAddress" parameterType="Address">
+		<selectKey resultType="int" order="BEFORE" keyProperty="addrId">
+			select my_seq.nextval from dual
+		</selectKey>
+		insert into addresses
+		values(#{addrId},#{street},#{city},#{state},#{zip},#{country})
+	</insert>
+	<!-- 插入学生表的数据 -->
+	<insert id="insertStudent" parameterType="Student">
+		insert into students
+		values(my_seq.nextval,#{name},#{email},#{phone},#{dob},#{address.addrId})
+	</insert>
+	
+</mapper>
+	

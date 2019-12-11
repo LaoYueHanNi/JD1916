@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties">
+		<!-- <property name="name" value="briup"/> <property name="password" value="briup"/> 
+			<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/> <property 
+			name="driver" value="oracle.jdbc.driver.OracleDriver"/> -->
+	</properties>
+
+	<!-- 设置全局参数 -->
+	<settings>
+		<setting name="logPrefix" value="qifei:" />
+	</settings>
+	<!-- 定义类型别名：就是给pojo类取一个名字 -->
+	<typeAliases>
+		<typeAlias type="com.briup.bean.Customer" alias="Customer" /> 
+		<typeAlias type="com.briup.bean.Category" alias="Category" /> 
+		<typeAlias type="com.briup.bean.Book" alias="Book" /> 
+		<typeAlias type="com.briup.bean.Order" alias="Order" /> 
+		<typeAlias type="com.briup.bean.OrderLine" alias="OrderLine" /> 
+		
+		<!-- 自动扫描该包,别名设置为类名 -->
+		<!-- <package name="com.briup.bean" /> -->
+	</typeAliases>
+	
+	
+
+	<!-- 提供数据库的连接信息 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 配置事务管理器 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${name}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 提供映射文件的路径 -->
+	<mappers>
+		<mapper resource="com/briup/dao/CategoryDao.xml"/>
+		<mapper resource="com/briup/dao/BookDao.xml"/>
+		<mapper class="com.briup.dao.CustomerDao" />
+		<mapper class="com.briup.dao.OrderDao" />
+		<mapper class="com.briup.dao.OrderLineDao" />
+	</mappers>
+
+</configuration>

@@ -1,0 +1,10 @@
+package interceptor;
+
+
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+//第二个SpringMVC的拦截器,继承HandlerInterceptorAdapter
+public class SecondInterceptor extends HandlerInterceptorAdapter{
+
+	
+}

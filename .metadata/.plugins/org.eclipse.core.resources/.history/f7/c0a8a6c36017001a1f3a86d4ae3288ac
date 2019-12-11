@@ -1,0 +1,9 @@
+package exam;
+
+public class N4 {
+	public String  getFourNums(int nums) {
+		
+		return "";
+	}
+	
+}

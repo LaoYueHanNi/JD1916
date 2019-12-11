@@ -1,0 +1,9 @@
+package com.briup.generic;
+//两个泛型参数s
+public class TwoGenericTest<K,V> {
+	private K key;
+	private V value;
+	public K getKey() {
+		retutn key;
+	}
+}

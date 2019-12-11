@@ -1,0 +1,15 @@
+package handler;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+
+//自定义控制器
+public interface MyHandler  {
+	
+	public ModelAndView test(HttpServletRequest req,HttpServletResponse resp) {
+		
+		return null;
+	}
+}

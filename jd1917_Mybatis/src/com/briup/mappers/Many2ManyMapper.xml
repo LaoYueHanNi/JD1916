@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.mappers.Many2ManyMapper">
+	<insert id="insertStudent" parameterType="Student">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+			select
+			my_seq.nextval from dual
+		</selectKey>
+		insert into
+		student(id,name,gender,major,grade)
+		values
+		(#{id},#{name},#{gender},#{major},#{grade})
+	</insert>
+
+	<insert id="insertCourse" parameterType="Course">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+			select
+			my_seq.nextval from dual
+		</selectKey>
+		insert into
+		course(id,course_code,course_name)
+		values
+		(#{id},#{courseCode},#{courseName})
+	</insert>
+
+	<select id="getStudentById" parameterType="int"
+		resultType="Student">
+		select id,name,gender,major,grade
+		from student
+		where id=#{id}
+	</select>
+
+	<select id="getCourseById" parameterType="int"
+		resultType="Course">
+		select id,course_code as courseCode,course_name as
+		courseName
+		from course
+		where id=#{id}
+	</select>
+	
+	<resultMap id="StudentResult" type="Student">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="major" column="major" />
+		<result property="grade" column="grade" />
+	</resultMap>
+
+	<resultMap type="Course" id="CourseResult">
+		<id property="id" column="cid"/>
+		<result property="courseCode" column="course_code"/>
+		<result property="courseName" column="course_name"/>
+	</resultMap>
+	
+	<resultMap type="Student" id="StudentWithCourseResult" extends="StudentResult">
+		<collection property="courses" resultMap="CourseResult"></collection>
+	</resultMap>
+
+	<!-- 查询学生的信息包括所选课程的信息 -->
+	<select id="getStudentByIdWithCourses" parameterType="int"
+		resultMap="StudentWithCourseResult">
+		select s.id ,s.name,s.gender,s.major,s.grade,c.id as
+		cid,c.course_code,c.course_name,sc.id,sc.student_id,sc.course_id
+		from
+		student s,course c,student_course sc
+		where s.id=#{id} and s.id=sc.student_id and sc.course_id=c.id
+	</select>
+	
+	<!-- 选课 ,在选课表插入数据-->
+	<insert id="studentSelectCourse"  >
+		insert into student_course
+		values(my_seq.nextVal,#{param1.id},#{param2.id})
+	</insert>
+	
+	<!--  查询id值比指定值小的学生的信息 -->
+	<select id="getStudentByIdOnCondition" parameterType="int" resultType="Student">
+		select *
+		from student
+		where id <![CDATA[ < ]]> #{id}
+	</select>
+	
+	<!-- 删除学生的信息,连同该学生所选的选课记录也要删除 -->
+	<delete id="deleteStudent" parameterType="int">
+		delete 
+		from student
+		where id=#{id}
+	</delete>
+	<delete id="deleteTableMsg" parameterType="int">
+		delete 
+		from student_course
+		where student_id=#{id}
+	</delete>
+	
+	<!-- 查询所有课程的信息,包含选择该课程的学生的信息 -->
+	<resultMap type="Course" id="CourseWithStudentResult" extends="CourseResult">
+		<collection property="students" resultMap="StudentResult"></collection>
+	</resultMap>
+
+	<select id="getAllCoursesWithStudent"  resultMap="CourseWithStudentResult">
+		select s.id ,s.name,s.gender,s.major,s.grade,c.id as
+		cid,c.course_code,c.course_name,sc.id,sc.student_id,sc.course_id
+		from student s,course c,student_course sc
+		where s.id=sc.student_id and sc.course_id=c.id
+	</select>
+	
+</mapper>

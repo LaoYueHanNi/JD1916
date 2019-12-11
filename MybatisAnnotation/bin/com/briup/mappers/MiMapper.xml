@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.briup.mappers.MiMapper">
+	
+	<resultMap type="Mi" id="MiResult">
+		<id property="miId" column="mi_id"/>
+		<result property="name" column="name"/>
+		<result property="points" column="points"/>
+	</resultMap>
+	
+	<!-- <select id="selectAllMi" resultType="Mi">
+		select *
+		from t_mi
+	</select> -->
+</mapper>
+	

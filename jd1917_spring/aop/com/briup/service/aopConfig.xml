@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		   http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		   http://www.springframework.org/schema/aop
+		   http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean class="com.briup.aop.bean.Account" name="account">
+		<property name="id" value="1"></property>
+		<property name="name" value="zs"></property>
+		<property name="balance" value="2311"></property>
+	</bean>
+
+	<bean class="com.briup.aop.dao.AccountDaoImpl" name="dao">
+	</bean>
+
+	<bean class="com.briup.service.AccountServiceImpl" name="service">
+		<property name="account" ref="account"></property>
+		<property name="accountDao" ref="dao"></property>
+	</bean>
+	<!-- 配置切面类对象 -->
+	<bean class="com.briup.aop.aspect.MyLog" name="log"></bean>
+	<!-- 配置后置通知对象 -->
+	<bean class="com.briup.aop.advice.AroundAdvice" name="around">
+		<property name="log" ref="log"></property>
+	</bean>
+
+	<!-- 配置代理对象 -->
+	<aop:config>
+		<!-- 配置切入点 id是切入点的名字 -->
+		<aop:pointcut expression="execution(* *Account(..))" id="MyPointcut"/>
+		<!-- 将通知对象作用于哪一个切入点上面 -->
+		<aop:advisor advice-ref="aroud" pointcut-ref="MyPointcut"/>
+	</aop:config>
+		
+
+
+</beans>

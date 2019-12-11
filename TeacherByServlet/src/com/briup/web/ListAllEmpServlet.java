@@ -1,0 +1,79 @@
+package com.briup.web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.briup.bean.Teacher;
+
+import common.ConnectionFactory;
+
+
+/**
+ * Servlet implementation class ListAllEmpServlet
+ */
+@WebServlet("/ListAllEmpServlet")
+public class ListAllEmpServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("GBK");
+		PrintWriter pw = response.getWriter();
+		//到数据库种查询所有员工的信息
+		Connection conn = ConnectionFactory.getConnection();
+							//ConnectionByJNDI.getConnection();
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.createStatement();
+			String sql = "select id,last_name,salary,title,start_date from s_emp";
+			rs = st.executeQuery(sql);
+			
+			//取session的数据
+			HttpSession session = request.getSession();
+			Teacher t = (Teacher)session.getAttribute("teacher");
+			pw.println("<h3>"+t.getName()+"</h3>");
+			pw.println("<table border='1'>");
+			pw.println("	<tr>\r\n" + 
+					"		<th>编号</th>\r\n" + 
+					"		<th>姓名</th>\r\n" + 
+					"		<th>工资</th>\r\n" + 
+					"		<th>职称</th>\r\n" + 
+					"		<th>入职时间</th>\r\n" +
+					"<th> 操作</th>"+
+					"	</tr>\r\n");
+					
+			while(rs.next()) {
+				pw.println("<tr><td>"+rs.getInt("id")+"</td>"
+						+"<td>"+rs.getString("last_name")+"</td>"
+						+"<td>"+rs.getDouble("salary")+"</td>"
+						+"<td>"+rs.getString("title")+"</td>"
+						+"<td>"+rs.getDate("start_date")+"</td>"
+						+"<td><input type='button' value='删除'></td></tr>"
+						);
+			}
+		pw.println("</table>");
+		}catch(Exception e){
+			e.printStackTrace();
+		} 
+		//显示在浏览器上
+		pw.flush();
+		pw.close();
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

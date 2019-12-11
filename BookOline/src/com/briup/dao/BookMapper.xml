@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.dao.IBookMapper">
+	<resultMap type="Book" id="BookResult">
+		<id column="id" property="id"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+		<result property="desciption" column="description"/>
+		<result property="writer" column="writer"/>
+		<result property="publish" column="publish"/>
+		<result property="page" column="pages"/>
+		<result property="image" column="images"/>
+		<association property="category" resultMap="CategoryResult"></association>
+	</resultMap>
+	<resultMap type="Category" id="CategoryResult">
+		<id property="id" column="categoryId"/>
+		<result property="name" column="categoryName"/>
+		<result property="description" column="categoryDescription"/>
+	</resultMap>
+	<select id="findAllBooks" resultMap="BookResult">
+		select b.*,c.id categoryId, c.name categoryName, c.description categoryDescription 
+		from tbl_book b,tbl_category c where b.categoryid = c.id  
+	</select>
+	<select id="findBookById" parameterType="int" resultMap="BookResult">
+		select b.*,c.id categoryId, c.name categoryName, c.description categoryDescription 
+		from tbl_book b,tbl_category c where b.categoryid = c.id  and b.id = #{id}
+	</select>
+</mapper>

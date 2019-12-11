@@ -1,0 +1,24 @@
+package com.briup.generic;
+//两个泛型参数s
+public class TwoGenericTest<K,V> {
+	private K key;
+	private V value;
+	
+	public TwoGenericTest(K key, V value) {
+		//构造器不能加泛型
+		super();
+		this.key = key;
+		this.value = value;
+	}
+	public K getKey() {
+		return key;
+	}
+	public V getValue() {
+		return value;
+	}
+	public static void main(String[] args) {
+		TwoGenericTest t= new TwoGenericTest(1, "hello");
+		System.out.println(t.getKey());
+		System.err.println(t.getValue());
+	}
+}

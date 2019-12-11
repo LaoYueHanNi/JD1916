@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>jd1916_xml</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>jar/crimson.jar</name>
+			<type>1</type>
+			<location>D:/VVJAVA/老师文件/xml_day02/day02/crimson.jar</location>
+		</link>
+		<link>
+			<name>src/com/briup/dom/student.xml</name>
+			<type>1</type>
+			<location>D:/VVJAVA/老师文件/XML_exercise/student.xml</location>
+		</link>
+	</linkedResources>
+</projectDescription>

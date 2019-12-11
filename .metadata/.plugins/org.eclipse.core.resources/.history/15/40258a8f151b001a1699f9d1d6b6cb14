@@ -1,0 +1,21 @@
+package web;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
+import org.springframework.web.servlet.mvc.Controller;
+
+public class FourthController extends AbstractController {
+
+	@Override
+	protected ModelAndView handleRequestInternal(HttpServletRequest paramHttpServletRequest,
+			HttpServletResponse paramHttpServletResponse) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+}

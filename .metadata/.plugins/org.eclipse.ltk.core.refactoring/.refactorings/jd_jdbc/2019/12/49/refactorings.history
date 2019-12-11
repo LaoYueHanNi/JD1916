@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;db.properties&apos; to &apos;jd1917_spring/db/com.briup.db.dao&apos;&#x0D;&#x0A;- Original project: &apos;jd_jdbc&apos;&#x0D;&#x0A;- Destination element: &apos;jd1917_spring/db/com.briup.db.dao&apos;&#x0D;&#x0A;- Original element: &apos;db.properties&apos;" description="Copy file" destination="=jd1917_spring/db&lt;com.briup.db.dao" element1="src/com/briup/common/db.properties" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1575430356293" units="0" version="1.0"/>
+</session>

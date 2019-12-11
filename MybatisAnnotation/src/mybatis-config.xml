@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties"></properties>
+	<!-- 定义类型别名：就是给pojo类取一个名字 -->
+	<typeAliases>
+		<!--  <typeAlias type="com.briup.bean.Mi" alias="Mi" />  -->
+		<package name="com.briup.bean" /> 
+	</typeAliases>
+
+
+	<!-- 提供数据库的连接信息 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 配置事务管理器 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${name}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		 <mapper resource="com/briup/mappers/MiMapper.xml"/> 
+	</mappers>
+</configuration>

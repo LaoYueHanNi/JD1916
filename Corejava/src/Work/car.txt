@@ -1,0 +1,5 @@
+oil:6.0L type:audi color:白色 weight:2t model:a7
+oil:7.0L type:audi color:白色 weight:1.5t model:a3
+oil:6.0L type:audi color:白色 weight:2t model:a6
+oil:6.0L type:audi color:黑色 weight:2.2t model:a8
+oil:6.0L type:大奔 color:白色 weight:2t model:a7

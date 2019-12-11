@@ -1,0 +1,15 @@
+package annotation;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+//¿ØÖÆÆ÷µÃÀà
+@Controller
+public class AnnotationController {
+
+		@RequestMapping("/h1.action")
+		public ModelAndView test1() {
+			return null;
+		}
+}

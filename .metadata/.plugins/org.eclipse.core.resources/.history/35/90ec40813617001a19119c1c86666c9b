@@ -1,0 +1,17 @@
+package com.briup.db.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.briup.db.bean.Student;
+import com.briup.db.service.IStudentService;
+
+//测试底层是Mybatis的事务
+public class TrByMybatisTest {
+	public static void main(String[] args) {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("com/briup/db/service/serviceByMybatis.xml","com/briup/db/mybatisDao/dao.xml");
+		IStudentService service = (IStudentService) ac.getBean("serviceProxy");
+		Student stu = new Student(10, "dada", "2", "xuni", "dasi");
+		service.saveStudent(stu);
+	}
+}

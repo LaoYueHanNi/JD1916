@@ -1,0 +1,38 @@
+package com.briup.ch05;
+
+public class Rectangle {
+	private int x,y;
+	private int chang;
+	private int kuan;
+	
+	public Rectangle() {
+		
+	}
+	public Rectangle(int x,int y,int kuan,int chang) {
+		
+	}
+	public void setChang(int chang) {
+		this.chang = chang;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setKuan(int kuan) {
+		this.kuan = kuan;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	public int getChang() {
+		return chang;
+	}
+	public int getKuan() {
+		return kuan;
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+}

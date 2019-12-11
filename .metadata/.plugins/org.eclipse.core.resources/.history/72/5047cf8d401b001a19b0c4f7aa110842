@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 配置映射器 -->
+	<bean
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<!-- 注入拦截器对象 -->
+		<!-- <property name="interceptors">
+			<list>
+				拦截器注入的顺序和拦截的顺序有关
+				<ref bean="interceptor1"/>
+				<ref bean="interceptor2"/>
+			</list>
+		</property> -->
+	</bean>
+
+
+	<!-- 配置适配器 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	<bean class="handler.MyHandlerAdapter"></bean>
+
+	<bean name="/first.action" class="web.FirstController"></bean>
+	<bean name="/second.action" class="web.SecondController"></bean>
+	<bean name="/third.action" class="web.ThirdController"></bean>
+	<bean name="/fourth.action" class="web.FourthController">
+	</bean>
+
+	<bean name="/firstHandler.action" class="handler.FirstHandler"></bean>
+
+
+
+	<!-- 配置视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 配置拦截器对象 -->
+	<bean name="interceptor1" class="interceptor.FirstInterceptor"></bean>
+	<bean name="interceptor2" class="interceptor.SecondInterceptor"></bean>
+	
+	<!-- 使用mvc注解的方式来配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>	
+			<!-- 指定拦截资源的路径 -->
+			<mvc:mapping path="/*"/>
+			<!-- 指定拦截器对象 -->
+			<ref bean="interceptor1"/>
+		</mvc:interceptor>
+		<mvc:interceptor>	
+			<!-- 指定拦截资源的路径 -->
+			<mvc:mapping path="/**"/>
+			<!--  配置不能拦截的路径 -->
+			<!-- <mvc:exclude-mapping path="/second.action"/> -->
+			<!-- 指定拦截器对象 -->
+			<!-- <ref bean="interceptor2"/> -->
+			<bean class="interceptor.SecondInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>	
+			<!-- 指定拦截资源的路径 -->
+			<mvc:mapping path="/**"/>
+			<!--  配置不能拦截的路径 -->
+			<!-- <mvc:exclude-mapping path="/second.action"/> -->
+			<!-- 指定拦截器对象 -->
+			<!-- <ref bean="interceptor2"/> -->
+			<bean class="interceptor.TimeInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>

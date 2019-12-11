@@ -1,0 +1,12 @@
+package handler;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//自定义控制器
+public interface MyHandler  {
+	
+	public ModleAndView test(HttpServletRequest req,HttpServletResponse resp) {
+		return null;
+	}
+}

@@ -1,0 +1,28 @@
+package web;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+public class FirstController implements Controller {
+
+	@Override
+	public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		// 接受客户端传来的数据
+		String name = req.getParameter("name");
+		System.out.println("接收到名字:" + name);
+		
+		//调用service层的方法,处理数据并返回数据
+		
+		//返回ModelAndView对象
+		ModelAndView mav = new ModelAndView();
+		//给ModelAndView对象设置逻辑视图名
+		mav.setViewName(viewName);
+		//给ModelAndView对象设添加页面显示的数据
+		mav.addObject("msg", "test ");
+		return null;
+	}
+
+}

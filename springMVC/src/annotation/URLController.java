@@ -1,0 +1,40 @@
+package annotation;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class URLController {
+	
+	@RequestMapping("/t1.action")
+	public String t1() {
+		return "first";
+	}
+	
+	//多个请求同时访问同一个方法
+	@RequestMapping({"/t2.action","/t3.action","/t4.action"})
+	public String t2() {
+		return "first";
+	}
+	
+	@RequestMapping("/user/{f}")
+	public String t3() {
+		return "second";
+	}
+	
+	@RequestMapping(value ="/t5" ,method = RequestMethod.GET)
+	public String t5() {
+		return "second";
+	}
+	
+	@RequestMapping(value = "/t6.action",params = "name" )
+	public String t6() {
+		return "second";
+	}
+	
+	@RequestMapping("/t8.action")
+	public String t8() {
+		return "first";
+	}
+}

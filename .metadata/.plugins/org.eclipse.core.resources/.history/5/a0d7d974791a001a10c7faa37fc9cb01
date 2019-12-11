@@ -1,0 +1,17 @@
+package n1_100;
+
+public class N4_2 {
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+		
+		if(nums1.length>nums2.length) {
+			int[] temp=nums1;
+			nums1 = nums2;
+			nums2 = temp;
+		}
+		
+		int length1 = nums1.length;
+		int length2 = nums2.length;
+		
+		return 0;
+	}
+}
