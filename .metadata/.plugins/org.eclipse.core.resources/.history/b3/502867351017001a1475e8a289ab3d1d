@@ -1,8 +1,0 @@
-package n1_100;
-
-public class N34 {
-	public int[] searchRange(int[] nums, int target) {
-		
-		return null;
-	}
-}
